@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
@@ -25,17 +25,25 @@ export class CadastroComponent {
 
   cadastrar(): void {
     console.log('Dados enviados:', this.usuario);
-    if (!this.usuario.email || !this.usuario.senha || !this.usuario.telefone  ) {
+
+    // Verifica se todos os campos foram preenchidos
+    if (!this.usuario.email || !this.usuario.senha || !this.usuario.telefone) {
       this.cadastroError = 'Preencha todos os campos!';
       return;
     }
 
+    // Chamada ao serviço para criar o usuário
     this.usuarioService.createUsuario(this.usuario).subscribe(
       (res) => {
         console.log('Usuário cadastrado com sucesso:', res);
         alert('Usuário cadastrado com sucesso!');
-        this.usuario = { email: '', senha: '',telefone:'' };
+
+        // Limpa o formulário
+        this.usuario = { email: '', senha: '', telefone: '' };
         this.cadastroError = null;
+
+        // Redireciona para a página de login
+        this.router.navigate(['/login']);
       },
       (err) => {
         console.error('Erro ao cadastrar usuário:', err);

@@ -28,21 +28,22 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const credentials = this.loginForm.value;
+      console.log('Credenciais enviadas:', credentials);
 
       this.usuarioService.login(credentials).subscribe(
         (res: any) => {
           console.log('Login bem-sucedido:', res);
 
-          // Armazena o token no localStorage (se fornecido pelo backend)
+          // Armazena o token no localStorage
           localStorage.setItem('token', res.token);
 
-          // Redireciona para a página de clientes ou qualquer outra rota
-          this.router.navigate(['/clientes']);
+          // Redireciona para a página inicial
+          this.router.navigate(['/home']);
           this.loginError = null;
         },
         (err) => {
           console.error('Erro no login:', err);
-          this.loginError = 'Erro ao realizar login. Verifique suas credenciais.';
+          this.loginError = err.error?.message || 'Erro ao realizar login. Verifique suas credenciais.';
         }
       );
     } else {

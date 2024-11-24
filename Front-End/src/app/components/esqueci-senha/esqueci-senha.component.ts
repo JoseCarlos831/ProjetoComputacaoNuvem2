@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
@@ -6,21 +8,38 @@ import { UsuarioService } from '../../services/usuario.service';
   templateUrl: './esqueci-senha.component.html',
   styleUrls: ['./esqueci-senha.component.css'],
 })
-export class EsqueciSenhaComponent {
-  email: string = '';
+export class EsqueciSenhaComponent implements OnInit {
+  esqueciSenhaForm!: FormGroup;
+  message: string | null = null;
+  error: string | null = null;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private router: Router) {}
 
-  enviarToken(): void {
-    this.usuarioService.esqueciSenha({ email: this.email }).subscribe(
-      (res) => {
-        console.log('Token enviado:', res);
-        alert('Um token de recuperação foi enviado para seu e-mail.');
-      },
-      (err) => {
-        console.error('Erro ao enviar token:', err);
-        alert('Erro ao enviar token. Verifique o e-mail informado.');
-      }
-    );
+  ngOnInit(): void {
+    this.esqueciSenhaForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      telefone: ['', [Validators.required, Validators.pattern(/^\+?[1-9]\d{1,14}$/)]],
+    });
+  }
+
+  onSubmit(): void {
+    if (this.esqueciSenhaForm.valid) {
+      const { email, telefone } = this.esqueciSenhaForm.value;
+
+      this.usuarioService.esqueciSenha({ email, telefone }).subscribe(
+        (res) => {
+          console.log('Token enviado com sucesso:', res);
+
+          // Redirecionar para a página de redefinição de senha
+          this.router.navigate(['/redefinir-senha']);
+        },
+        (err) => {
+          console.error('Erro ao enviar token:', err);
+          this.error = 'Erro ao enviar o link. Tente novamente.';
+        }
+      );
+    } else {
+      this.error = 'Por favor, preencha todos os campos corretamente.';
+    }
   }
 }

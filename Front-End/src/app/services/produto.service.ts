@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProdutoService {
-  private apiUrl = 'http://localhost:4400/api/produtos'; 
+  private apiUrl = 'http://localhost:4400/api/produtos';
 
   constructor(private http: HttpClient) {}
 
@@ -15,11 +15,13 @@ export class ProdutoService {
   }
 
   createProduto(data: any): Observable<any> {
+    console.log('Dados enviados para o backend:',data);
     return this.http.post(this.apiUrl, data);
   }
 
+
   updateProduto(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, data);
   }
 
   deleteProduto(id: string): Observable<any> {

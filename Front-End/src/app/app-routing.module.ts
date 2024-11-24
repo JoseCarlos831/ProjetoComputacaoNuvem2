@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponent } from './components/clientes/clientes.component';
+import { HomeComponent } from './components/home/home.component';
 import { EstoqueComponent } from './components/estoque/estoque.component';
 import { FinancasComponent } from './components/financas/financas.component';
 import { ProdutoComponent } from './components/produto/produto.component';
@@ -15,13 +16,14 @@ const routes: Routes = [
   { path: 'produtos', component: ProdutoComponent,canActivate: [AuthGuard] },
   { path: 'financas', component: FinancasComponent,canActivate: [AuthGuard] },
   { path: 'estoque', component: EstoqueComponent,canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuard] },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'esqueci-senha', component: EsqueciSenhaComponent },
   { path: 'redefinir-senha', component: RedefinirSenhaComponent },
-  { path: '', redirectTo: '/clientes', pathMatch: 'full' },
-  { path: '**', redirectTo: '/clientes' },
- // Rota padrão
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'signup', redirectTo: '/cadastro', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

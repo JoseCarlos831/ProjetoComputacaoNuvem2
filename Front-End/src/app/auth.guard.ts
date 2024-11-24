@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
   ): boolean {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token');
+      console.log('Token atual:', token);
       if (token) {
         return true;
       }

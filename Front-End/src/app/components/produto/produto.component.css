@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.col {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+h3 {
+  margin-bottom: 15px;
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 5px;
+}

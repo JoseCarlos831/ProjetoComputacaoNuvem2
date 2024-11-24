@@ -1,1 +1,97 @@
-<p>produto works!</p>
+<div class="layout">
+  <aside class="sidebar">
+    <img src="../../../assets/WhatsApp_Image_2024-03-08_at_16.15.20-removebg-preview.png" alt="Logo" width="200px" />
+    <nav>
+      <ul>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/financas">Finanças</a></li>
+        <li><a routerLink="/estoque">Estoque</a></li>
+        <li><a routerLink="/clientes">Clientes</a></li>
+        <li><a routerLink="/produtos">Produtos</a></li>
+        <li><a routerLink="/login">Sair</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>Gerenciar Produtos</h1>
+
+    <!-- Formulário de Adição/Edição de Produtos -->
+    <form (ngSubmit)="onSubmit()" [formGroup]="produtoForm">
+      <div>
+        <label for="codigo">Código do Produto:</label>
+        <input
+          id="codigo"
+          type="number"
+          formControlName="codigo"
+          placeholder="Código do Produto"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="nomeProduto">Nome do Produto:</label>
+        <input
+          id="nomeProduto"
+          type="text"
+          formControlName="nomeProduto"
+          placeholder="Nome do Produto"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="marca">Marca:</label>
+        <input
+          id="marca"
+          type="text"
+          formControlName="marca"
+          placeholder="Marca do Produto"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="categoria">Categoria:</label>
+        <input
+          id="categoria"
+          type="text"
+          formControlName="categoria"
+          placeholder="Categoria do Produto"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="preco">Preço:</label>
+        <input
+          id="preco"
+          type="number"
+          formControlName="preco"
+          placeholder="Preço do Produto"
+          required
+        />
+      </div>
+
+      <button type="submit" [disabled]="produtoForm.invalid">Cadastrar Produto
+      </button>
+    </form>
+
+    <p *ngIf="produtoError" class="error-message">{{ produtoError }}</p>
+
+    <!-- Lista de Produtos -->
+    <div class="product-list">
+      <h3>Lista de Produtos</h3>
+      <div *ngIf="produtos.length === 0">
+        <p>Não há Produtos cadastrados.</p>
+      </div>
+      <div *ngFor="let produto of produtos">
+        <p>Código do Produto: {{ produto.codigo }}</p>
+        <p>Nome do Produto: {{ produto.nomeProduto }}</p>
+        <p>Marca: {{ produto.marca }}</p>
+        <p>Categoria: {{ produto.categoria }}</p>
+        <p>Preço: {{ produto.preco }}</p>
+      </div>
+    </div>
+  </main>
+</div>
