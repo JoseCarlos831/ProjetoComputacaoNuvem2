@@ -1,4 +1,5 @@
 Projeto Integrado - Sistema de Gestão Barbini
+
 📜 Descrição do Projeto
 O Sistema de Gestão Barbini é uma aplicação completa desenvolvida para auxiliar na gestão de uma construtora fictícia, Barbini Construções, oferecendo recursos para controle de estoque, cadastro de clientes, gestão financeira, autenticação de usuários e redefinição de senhas. O projeto foi desenvolvido como parte de um trabalho acadêmico para consolidar os conceitos de desenvolvimento full-stack.
 
@@ -6,8 +7,10 @@ O Sistema de Gestão Barbini é uma aplicação completa desenvolvida para auxil
 O projeto é dividido em duas partes principais:
 
 Back-End: API desenvolvida em Node.js com o framework Express e Sequelize ORM para conexão com o banco de dados MySQL.
+
 Front-End: Aplicação Angular com design responsivo, utilizando Reactive Forms para validações e autenticação.
 🛠️ Tecnologias Utilizadas
+
 Back-End:
 Node.js: Ambiente de execução JavaScript.
 Express: Framework para criação da API.
