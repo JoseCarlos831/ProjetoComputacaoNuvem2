@@ -1,0 +1,56 @@
+<div class="layout">
+  <aside class="sidebar">
+    <img
+      src="../../../assets/WhatsApp_Image_2024-03-08_at_16.15.20-removebg-preview.png"
+      alt="Logo"
+      width="200px"
+    />
+    <nav>
+      <ul>
+        <li><a routerLink="/cadastro">Cadastro</a></li>
+        <li><a routerLink="/login">Login</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h2>Cadastrar Novo Usuário</h2>
+
+    <!-- Formulário de Cadastro -->
+    <form (ngSubmit)="cadastrar()">
+      <!-- Campo de E-mail -->
+      <label for="email">E-mail:</label>
+      <input
+        id="email"
+        type="email"
+        [(ngModel)]="usuario.email"
+        name="email"
+        placeholder="E-mail"
+        required
+      />
+
+      <label for="senha">Senha:</label>
+      <input
+        id="senha"
+        type="password"
+        [(ngModel)]="usuario.senha"
+        name="senha"
+        placeholder="Senha"
+        required
+      />
+      <label for="telefone">Telefone:</label>
+      <input
+        id="telefone"
+        type="text"
+        [(ngModel)]="usuario.telefone"
+        name="telefone"
+        placeholder="Telefone"
+        required
+      />
+      <button type="submit">Cadastrar</button>
+    </form>
+    <!-- Inserir campo telefone  -->
+
+    <p *ngIf="cadastroError" class="error-message">{{ cadastroError }}</p>
+  </main>
+</div>

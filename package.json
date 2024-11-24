@@ -1,0 +1,17 @@
+{
+  "name": "projeto-integrado",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "concurrently \"npm run dev:Back-End\" \"npm run dev:Front-End\"",
+  "dev:Back-End": "cd Back-End && npm run dev ",
+  "dev:Front-End": "cd Front-End && ng serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

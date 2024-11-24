@@ -1,0 +1,11 @@
+<p>redefinir-senha works!</p>
+<div>
+  <h1>Redefinir Senha</h1>
+  <form (ngSubmit)="redefinirSenha()">
+    <label for="token">Token:</label>
+    <input id="token" [(ngModel)]="token" name="token" required />
+    <label for="novaSenha">Nova Senha:</label>
+    <input id="novaSenha" [(ngModel)]="novaSenha" name="novaSenha" type="password" required />
+    <button type="submit">Redefinir Senha</button>
+  </form>
+</div>
