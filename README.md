@@ -1,6 +1,4 @@
 Projeto Integrado - Sistema de Gestão Barbini
-<!-- Substitua pelo link do logo, caso queira adicionar -->
-
 📜 Descrição do Projeto
 O Sistema de Gestão Barbini é uma aplicação completa desenvolvida para auxiliar na gestão de uma construtora fictícia, Barbini Construções, oferecendo recursos para controle de estoque, cadastro de clientes, gestão financeira, autenticação de usuários e redefinição de senhas. O projeto foi desenvolvido como parte de um trabalho acadêmico para consolidar os conceitos de desenvolvimento full-stack.
 
@@ -56,17 +54,12 @@ Banco de dados MySQL configurado.
 Angular CLI instalado globalmente.
 Back-End:
 Acesse o diretório do back-end:
-bash
-Copiar código
 cd Back-End
 Instale as dependências:
-bash
-Copiar código
 npm install
 Configure o arquivo .env:
 Crie o arquivo .env na raiz do projeto com as seguintes variáveis:
 env
-Copiar código
 DB_HOST=localhost
 DB_USER=seu_usuario
 DB_PASSWORD=sua_senha
@@ -76,31 +69,19 @@ TWILIO_SID=sua_twilio_sid
 TWILIO_AUTH_TOKEN=seu_auth_token
 TWILIO_PHONE_NUMBER=+5511999999999
 Execute as migrations:
-bash
-Copiar código
 npx sequelize db:migrate
 Inicie o servidor:
-bash
-Copiar código
-npm start
+npm run dev
 Front-End:
 Acesse o diretório do front-end:
-bash
-Copiar código
 cd Front-End
 Instale as dependências:
-bash
-Copiar código
 npm install
 Inicie o servidor Angular:
-bash
-Copiar código
 ng serve
 Acesse no navegador: http://localhost:4200.
 📂 Estrutura de Pastas
 Back-End:
-mathematica
-Copiar código
 Back-End/
 ├── src/
 │   ├── controllers/
@@ -110,8 +91,6 @@ Back-End/
 │   └── middlewares/
 └── .env
 Front-End:
-mathematica
-Copiar código
 Front-End/
 ├── src/
 │   ├── app/
@@ -131,4 +110,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 
 📝 Licença
 Este projeto é desenvolvido apenas para fins educacionais e não possui fins comerciais.
-
