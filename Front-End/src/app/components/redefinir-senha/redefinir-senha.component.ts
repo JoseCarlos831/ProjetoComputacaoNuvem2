@@ -27,7 +27,12 @@ export class RedefinirSenhaComponent implements OnInit {
       novaSenha: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.route.queryParams.subscribe((params) => {
-      console.log('Email recebido:', params['email']);
+      const email = params['email'];
+      if (email) {
+        console.log('Email recebido:', email); // Apenas para depuração
+      } else {
+        console.warn('Nenhum email foi recebido na URL.');
+      }
     });
   }
 
@@ -50,6 +55,8 @@ export class RedefinirSenhaComponent implements OnInit {
           this.error = 'Erro ao redefinir senha. Tente novamente.';
         }
       );
+    } else {
+      this.error = 'Por favor, preencha todos os campos corretamente.';
     }
   }
 }

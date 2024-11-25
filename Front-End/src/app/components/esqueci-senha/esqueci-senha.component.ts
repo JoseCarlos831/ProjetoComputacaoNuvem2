@@ -31,8 +31,8 @@ export class EsqueciSenhaComponent implements OnInit {
           console.log('Token enviado com sucesso:', res);
 
           // Redirecionar para a página de redefinição de senha
-          this.router.navigate(['/redefinir-senha']);
-        },
+          this.router.navigate(['/redefinir-senha'], { queryParams: { email } });
+      },
         (err) => {
           console.error('Erro ao enviar token:', err);
           this.error = 'Erro ao enviar o link. Tente novamente.';

@@ -1,6 +1,6 @@
 <div class="layout">
   <aside class="sidebar">
-    <img src="../../../assets/WhatsApp_Image_2024-03-08_at_16.15.20-removebg-preview.png" alt="Logo" width="200px">
+    <img src="../../../assets/WhatsApp_Image_2024-03-08_at_16.15.20-removebg-preview.png" alt="Logo" width="200px" />
     <nav>
       <ul>
         <li><a routerLink="/home">Home</a></li>
@@ -13,35 +13,78 @@
     </nav>
   </aside>
 
-  <div class="financas-container">
-    <div class="registro-venda">
-      <h2>Registrar Venda</h2>
-      <form (ngSubmit)="onSubmit()" [formGroup]="vendaForm">
-        <label for="produto">Produto:</label>
-        <input id="produto" formControlName="produto" type="text" placeholder="Produto" required />
+  <main class="content">
+    <h1>Gerenciar Finanças</h1>
 
-        <label for="quantidade">Quantidade:</label>
-        <input id="quantidade" formControlName="quantidade" type="number" min="1" required />
+    <div class="financas-container">
+      <!-- Formulário de Registro de Venda -->
+      <div class="registro-venda">
+        <h2>Registrar Venda</h2>
+        <form (ngSubmit)="onSubmit()" [formGroup]="vendaForm">
+          <div>
+            <label for="cliente">Cliente:</label>
+            <input
+              id="cliente"
+              formControlName="clienteId"
+              type="number"
+              placeholder="ID do Cliente"
+              required
+            />
+          </div>
 
-        <label for="valorUnitario">Valor Unitário:</label>
-        <input id="valorUnitario" formControlName="valorUnitario" type="number" min="0" step="0.01" required />
+          <div>
+            <label for="produto">Produto:</label>
+            <input
+              id="produto"
+              formControlName="produtoId"
+              type="number"
+              placeholder="ID do Produto"
+              required
+            />
+          </div>
 
-        <button type="submit" [disabled]="vendaForm.invalid">Registrar Venda</button>
-      </form>
-      <p *ngIf="vendaError" class="error-message">{{ vendaError }}</p>
-    </div>
+          <div>
+            <label for="quantidade">Quantidade:</label>
+            <input
+              id="quantidade"
+              formControlName="quantidade"
+              type="number"
+              placeholder="Quantidade"
+              required
+            />
+          </div>
 
-    <div class="historico-vendas">
-      <h3>Histórico de Vendas</h3>
-      <div *ngIf="historicoVendas.length === 0">
-        <p>Nenhuma venda registrada.</p>
+          <div>
+            <label for="valor">Valor Unitário:</label>
+            <input
+              id="valor"
+              formControlName="valorUnitario"
+              type="number"
+              placeholder="Valor Unitário"
+              required
+            />
+          </div>
+
+          <button type="submit" [disabled]="vendaForm.invalid">Registrar Venda</button>
+        </form>
+        <p *ngIf="vendaError" class="error-message">{{ vendaError }}</p>
+        <p *ngIf="sucessoMensagem" class="success-message">{{ sucessoMensagem }}</p>
       </div>
-      <div *ngFor="let venda of historicoVendas">
-        <p>Produto: {{ venda.produto }}</p>
-        <p>Quantidade: {{ venda.quantidade }}</p>
-        <p>Valor Total: R$ {{ venda.valorTotal | number: '1.2-2' }}</p>
-        <p>Data: {{ venda.data | date: 'dd/MM/yyyy' }}</p>
+
+      <!-- Histórico de Vendas -->
+      <div class="historico-vendas">
+        <h3>Histórico de Vendas</h3>
+        <div *ngIf="historicoVendas.length === 0">
+          <p>Não há vendas registradas.</p>
+        </div>
+        <div *ngFor="let venda of historicoVendas">
+          <p>Cliente: {{ venda.cliente?.nome || venda.cliente }}</p>
+          <p>Produto: {{ venda.produto?.nomeProduto || venda.produto }}</p>
+          <p>Quantidade: {{ venda.quantidade }}</p>
+          <p>Valor Total: R$ {{ venda.valor }}</p>
+        </div>
       </div>
+
     </div>
-  </div>
+  </main>
 </div>

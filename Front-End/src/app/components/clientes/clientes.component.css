@@ -1,48 +1,97 @@
-/* src/app/components/clientes/clientes.component.css */
 .clientes-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .cadastro-cliente, .lista-clientes {
-    width: 48%;
-  }
-  .lista-clientes{
-    position: relative;
-    bottom: 10px;
-  }
-  .cadastro-cliente{
-    position: relative;
-    top: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
+  box-sizing: border-box;
+  gap: 20px;
+}
 
-  }
-  
-  input, button {
-    display: block;
-    margin: 8px 0;
-    padding: 8px;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 10px;
-  }
-  
-  button {
-    background-color: #D32F2F;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #C62828;
-  }
-  h2{
-    color: black;
-  }
-  h3{
-    color: black;
-  }
-  
+.registro-cliente, .lista-clientes {
+  width: 48%; /* Ajusta para ocupar metade da largura */
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+  font-size: 1.8em;
+  color: #D32F2F;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input, button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #D32F2F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #C62828;
+}
+
+.cliente-card {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-top: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.clientes-lista {
+  width: 100%; /* Ocupa toda a largura disponível */
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.clientes-lista h3 {
+  font-size: 1.5em;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pclientes-lista div {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-top: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.clientes-lista div p {
+  margin: 5px 0; /* Ajusta o espaçamento interno dos textos */
+}
+

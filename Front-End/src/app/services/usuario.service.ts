@@ -34,7 +34,8 @@ export class UsuarioService {
     return this.http.post('http://localhost:4400/api/esqueci-senha', data);
   }
 
-  redefinirSenha(data: any): Observable<any> {
+  redefinirSenha(data: { codigo: string; novaSenha: string }): Observable<any> {
     return this.http.post('http://localhost:4400/api/redefinir-senha', data);
   }
+
 }

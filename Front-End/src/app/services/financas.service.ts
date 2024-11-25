@@ -15,10 +15,6 @@ export class FinancasService {
     return this.http.get(`${this.apiUrl}/vendas`);
   }
 
-  createVenda(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/vendas`, data);
-  }
-
   deleteVenda(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/vendas/${id}`);
   }
@@ -28,11 +24,12 @@ export class FinancasService {
     return this.http.get(`${this.apiUrl}/item-venda`);
   }
 
-  createItemVenda(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/item-venda`, data);
+  criarVenda(dataVenda: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/vendas`, dataVenda);
   }
 
-  deleteItemVenda(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/item-venda/${id}`);
+  criarItemVenda(dataItemVenda: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/item-venda`, dataItemVenda);
   }
+
 }
